@@ -209,6 +209,21 @@
   (test (pop-min heap :default) :default)
   (test-error (pop-min heap) "cannot pop an empty heap with no default"))
 
+(deftest "ordering is completely unstable"
+  (def heap (new (fn [a b] (cmp (a 1) (b 1)))))
+  (push heap [:a 0])
+  (push heap [:b 0])
+  (push heap [:c 0])
+  (push heap [:d 0])
+  (push heap [:e 0])
+  (test (pop-min heap) [:a 0])
+  (test (pop-min heap) [:d 0])
+  (test (pop-min heap) [:c 0])
+  (push heap [:c 0])
+  (test (pop-min heap) [:b 0])
+  (test (pop-min heap) [:e 0])
+  (test (pop-min heap) [:c 0]))
+
 (def- core/length length)
 (defn length [heap]
   (core/length (heap 0)))
