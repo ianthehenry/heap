@@ -20,7 +20,7 @@ Quick example, using [`cmp`](https://github.com/ianthehenry/cmp) as a convenient
 # {:name "Ian" :score 20}
 
 (heap/pop-max users)
-# {:name "Johnny" :score 20}
+# {:name "Johnny" :score 15}
 ```
 
 API:
@@ -53,7 +53,5 @@ API:
 # linear time
 (heap/contains? heap value)
 ```
-
-This was hacked up in a few hours for advent of code so there might be bugs. It's not super battle-tested.
 
 The implementation makes no guarantees about pop order for elements that compare identically (it does not try to enforce FIFO or LIFO ordering).
